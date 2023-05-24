@@ -2,7 +2,7 @@
 
 <template>
   <div class="box">
-    <h1>我是App</h1>
+    <h1>我是Vue3</h1>
   </div>
 </template>
 

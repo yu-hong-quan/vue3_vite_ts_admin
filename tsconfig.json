@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": "./", //解析非相对模块的基地址，默认是当前目录
+    "paths": {//路径映射，相当于baseUrl
+      "@/*":["src/*"]
+    },
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",

@@ -1,5 +1,33 @@
-# Vue 3 + TypeScript + Vite + Eslint + Prettier
+# 技术栈及插件
 
-# Eslint代码检查运行命令 pnpm/npm run lint
+Vue3、TypeScript、Vite、Eslint、Prettier、StyleLintrc、Husky、CommitLint
 
-# Eslint代码修复运行命令 pnpm/npm run fix
+# Eslint ：代码及修复命令
+
+检查命令: pnpm/npm run lint
+修复命令: pnpm/npm run fix
+
+# Prettier ：代码格式化（项目中已配置了 ctrl+s 保存自动格式化）
+
+格式化命令：pnpm/npm run format
+
+# StyleLintrc ：CSS 规范校验工具
+
+# Husky ：将提交的代码进行一次格式化操作，防止有代码提交时没有格式化
+
+安装：pnpm/npm i -D husky
+
+# CommitLint ：统一 Git Commit 提交时的填写描述格式
+
+安装：pnpm add @commitlint/config-conventional @commitlint/cli -D
+
+'feat',//新特性、新功能
+'fix',//修改 bug
+'docs'//文档修改
+'style',//代码格式修改，注意不是 css 修改
+'refactor',//代码重构
+'perf',//优化相关，比如提升性能、体验
+'test',//测试用例修改
+'chore',//其他修改，比如改变构建流程、或者增加依赖库、工具等
+'revert',//回滚到上一个版本
+'build',//编译相关的修改，例如发布版本、对项目构建或者依赖的改动

@@ -19,5 +19,3 @@ h1 {
   color: $color;
 }
 </style>
-
-

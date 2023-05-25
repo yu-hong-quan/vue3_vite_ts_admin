@@ -29,11 +29,10 @@ export default defineConfig({
   // scss全局变量配置
   css: {
     preprocessorOptions: {
-      scss:
-      {
+      scss: {
         javascriptEnabled: true,
         additionalData: '@import "./src/styles/variable.scss";',
       },
     },
-  }
+  },
 });

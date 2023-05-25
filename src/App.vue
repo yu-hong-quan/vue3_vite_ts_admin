@@ -7,8 +7,17 @@ import { ElConfigProvider } from 'element-plus';
 
 <template>
   <el-config-provider :locale="zhCn">
-    <div class="home"></div>
+    <div class="home">
+      <SvgIcon name="add" inlineStyle="width:20px;height: 20px;"></SvgIcon>
+      <h1>12312</h1>
+    </div>
   </el-config-provider>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+h1 {
+  color: $color;
+}
+</style>
+
+

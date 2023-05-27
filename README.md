@@ -1,6 +1,6 @@
 # 技术栈及插件
 
-Vue3、TypeScript、Vite、Eslint、Prettier、StyleLintrc、Husky、CommitLint、Element-Plus、Mock、Axios
+Vue3、TypeScript、Vite、Eslint、Prettier、StyleLintrc、Husky、CommitLint、Element-Plus、Mock、Axios、vue-router
 
 ### Eslint ：代码及修复命令
 

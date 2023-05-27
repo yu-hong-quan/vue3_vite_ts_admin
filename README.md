@@ -1,6 +1,6 @@
 # 技术栈及插件
 
-Vue3、TypeScript、Vite、Eslint、Prettier、StyleLintrc、Husky、CommitLint、Element-Plus、Mock
+Vue3、TypeScript、Vite、Eslint、Prettier、StyleLintrc、Husky、CommitLint、Element-Plus、Mock、Axios
 
 ### Eslint ：代码及修复命令
 
@@ -64,6 +64,8 @@ Vue3、TypeScript、Vite、Eslint、Prettier、StyleLintrc、Husky、CommitLint�
 
 ### Mock：数据模拟
 
-安装：pnpm install -D vite-plugin-mock mockjs
+安装：pnpm install -D vite-plugin-mock@2.9.6 mockjs
 
 ---
+
+### Axios：网络请求插件

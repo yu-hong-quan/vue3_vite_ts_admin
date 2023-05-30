@@ -5,19 +5,19 @@
 // Read more: https://github.com/vuejs/core/pull/3399
 import '@vue/runtime-core'
 
-export {}
+export {};
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    ElButton: typeof import('element-plus/es')['ElButton']
-    ElForm: typeof import('element-plus/es')['ElForm']
-    ElFormItem: typeof import('element-plus/es')['ElFormItem']
-    ElIcon: typeof import('element-plus/es')['ElIcon']
-    ElInput: typeof import('element-plus/es')['ElInput']
-    ElText: typeof import('element-plus/es')['ElText']
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
-    SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
-    Valicode: typeof import('./src/components/valicode/index.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton'];
+    ElForm: typeof import('element-plus/es')['ElForm'];
+    ElFormItem: typeof import('element-plus/es')['ElFormItem'];
+    ElIcon: typeof import('element-plus/es')['ElIcon'];
+    ElInput: typeof import('element-plus/es')['ElInput'];
+    ElText: typeof import('element-plus/es')['ElText'];
+    RouterLink: typeof import('vue-router')['RouterLink'];
+    RouterView: typeof import('vue-router')['RouterView'];
+    SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default'];
+    Valicode: typeof import('./src/components/valicode/index.vue')['default'];
   }
 }

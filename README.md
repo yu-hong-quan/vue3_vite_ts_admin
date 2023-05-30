@@ -1,6 +1,6 @@
 # 技术栈及插件
 
-Vue3、TypeScript、Vite、Eslint、Prettier、StyleLintrc、Husky、CommitLint、Element-Plus、Mock、Axios、vue-router
+Vue3、TypeScript、Vite、Eslint、Prettier、StyleLintrc、Husky、CommitLint、Element-Plus、Mock、Axios、vue-router、Pinia
 
 ### Eslint ：代码及修复命令
 
@@ -69,3 +69,7 @@ Vue3、TypeScript、Vite、Eslint、Prettier、StyleLintrc、Husky、CommitLint�
 ---
 
 ### Axios：网络请求插件
+
+---
+
+### Pinia：状态管理器

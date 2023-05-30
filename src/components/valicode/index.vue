@@ -40,12 +40,12 @@ const draw = () => {
 };
 
 // 生成一个随机数
-const randomNum = (min, max) => {
+const randomNum = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
 // 生成一个随机的颜色
-const randomColor = (min, max) => {
+const randomColor = (min: number, max: number) => {
   let r = randomNum(min, max);
   let g = randomNum(min, max);
   let b = randomNum(min, max);
@@ -57,6 +57,11 @@ const refresh = () => {
   draw();
   emits('getCode', code.value);
 };
+
+// 子组件导出需要在父组件中调用的方法
+defineExpose({
+  refresh
+})
 
 onMounted(() => {
   const code = ref('');

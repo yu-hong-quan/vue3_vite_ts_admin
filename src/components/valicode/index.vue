@@ -60,8 +60,8 @@ const refresh = () => {
 
 // 子组件导出需要在父组件中调用的方法
 defineExpose({
-  refresh
-})
+  refresh,
+});
 
 onMounted(() => {
   const code = ref('');

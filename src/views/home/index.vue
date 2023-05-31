@@ -4,6 +4,10 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+defineOptions({
+  name: "home"
+})
+</script>
 
 <style lang="" scoped></style>

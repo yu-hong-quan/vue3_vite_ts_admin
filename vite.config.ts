@@ -9,7 +9,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 // mock插件提供的方法
 import { viteMockServe } from 'vite-plugin-mock';
 
-console.log(viteMockServe);
+import DefineOptions from 'unplugin-vue-define-options/vite';
 
 export default defineConfig(({ command }) => {
   console.log(command);
@@ -33,6 +33,7 @@ export default defineConfig(({ command }) => {
         mockPath: 'mock',
         localEnabled: command === 'serve', //保证开发阶段可以使用mock接口
       }),
+      DefineOptions()
     ],
     resolve: {
       alias: {

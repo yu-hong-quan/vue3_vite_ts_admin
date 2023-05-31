@@ -1,2 +1,17 @@
 // 清除默认样式
 @import './reset.scss';
+
+// 全局滚动条外观设计
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 10px;
+    background: $base-menu-background;
+    border-radius: 10px;
+}

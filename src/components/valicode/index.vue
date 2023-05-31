@@ -79,5 +79,6 @@ onMounted(() => {
   justify-content: center;
   flex-direction: column;
   margin-left: 30px;
+  cursor: pointer;
 }
 </style>

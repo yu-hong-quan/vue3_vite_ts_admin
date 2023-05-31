@@ -15,12 +15,12 @@ let useUserStore = defineStore('User', {
   state: (): UserState => {
     return {
       token: GET_TOKEN(),
-      menuRoutes: constantRoute,//仓库存储生成菜单需要的数组
+      menuRoutes: constantRoute, //仓库存储生成菜单需要的数组
     };
   },
   // 处理逻辑的地方
   actions: {
-    // 用户登录的方法 
+    // 用户登录的方法
     async userLogin(data: loginForm) {
       let result: loginResponseData = await reqLogin(data);
       console.log(result);

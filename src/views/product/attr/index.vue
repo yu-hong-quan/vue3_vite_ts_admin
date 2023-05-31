@@ -6,8 +6,8 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name: "attr"
-})
+  name: 'attr',
+});
 </script>
 
 <style lang="" scoped></style>

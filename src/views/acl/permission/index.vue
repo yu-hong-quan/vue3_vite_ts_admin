@@ -6,8 +6,8 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name: "permission"
-})
+  name: 'permission',
+});
 </script>
 
 <style lang="" scoped></style>

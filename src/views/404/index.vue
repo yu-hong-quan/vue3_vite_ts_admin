@@ -6,8 +6,8 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name: "404"
-})
+  name: '404',
+});
 </script>
 
 <style lang="" scoped></style>

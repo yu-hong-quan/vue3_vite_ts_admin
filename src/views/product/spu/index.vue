@@ -6,8 +6,8 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name: "spu"
-})
+  name: 'spu',
+});
 </script>
 
 <style lang="" scoped></style>

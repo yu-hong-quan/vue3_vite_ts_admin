@@ -33,7 +33,7 @@ export default defineConfig(({ command }) => {
         mockPath: 'mock',
         localEnabled: command === 'serve', //保证开发阶段可以使用mock接口
       }),
-      DefineOptions()
+      DefineOptions(),
     ],
     resolve: {
       alias: {

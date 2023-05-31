@@ -6,8 +6,8 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name: "user"
-})
+  name: 'user',
+});
 </script>
 
 <style lang="scss" scoped>

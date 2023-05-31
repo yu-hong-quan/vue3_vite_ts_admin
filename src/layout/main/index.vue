@@ -9,8 +9,8 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name: "main"
-})
+  name: 'main',
+});
 </script>
 
 <style lang="scss" scoped>

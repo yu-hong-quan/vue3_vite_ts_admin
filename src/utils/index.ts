@@ -6,11 +6,11 @@ export const paramObj = (url: string) => {
   }
   return JSON.parse(
     '{"' +
-    decodeURIComponent(search)
-      .replace(/"/g, '\\"')
-      .replace(/&/g, '","')
-      .replace(/=/g, '":"') +
-    '"}',
+      decodeURIComponent(search)
+        .replace(/"/g, '\\"')
+        .replace(/&/g, '","')
+        .replace(/=/g, '":"') +
+      '"}',
   );
 };
 
@@ -44,5 +44,5 @@ export const GET_TOKEN = () => {
 export const getAssetURL = (image: string) => {
   // 参数一: 相对路径
   // 参数二: 当前路径的URL
-  return new URL(`${image}`, import.meta.url).href
-}
+  return new URL(`${image}`, import.meta.url).href;
+};

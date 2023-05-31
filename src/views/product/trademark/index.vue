@@ -6,8 +6,8 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name: "trademark"
-})
+  name: 'trademark',
+});
 </script>
 
 <style lang="" scoped></style>

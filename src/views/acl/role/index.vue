@@ -6,8 +6,8 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name: "role"
-})
+  name: 'role',
+});
 </script>
 
 <style lang="" scoped></style>

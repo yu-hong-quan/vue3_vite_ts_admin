@@ -6,8 +6,8 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name: "sku"
-})
+  name: 'sku',
+});
 </script>
 
 <style lang="" scoped></style>

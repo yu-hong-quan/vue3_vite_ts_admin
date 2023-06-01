@@ -19,13 +19,15 @@ let layOutSettingStore = useLayOutSettingStore();
 let flag = ref(true);
 
 // 监听仓库内部数据是否发生变化
-watch(() => layOutSettingStore.refsh, () => {
-  flag.value = false;
-  nextTick(() => {
-    flag.value = true;
-  })
-})
-
+watch(
+  () => layOutSettingStore.refsh,
+  () => {
+    flag.value = false;
+    nextTick(() => {
+      flag.value = true;
+    });
+  },
+);
 </script>
 
 <style lang="scss" scoped>
@@ -35,7 +37,7 @@ watch(() => layOutSettingStore.refsh, () => {
 }
 
 .fade-enter-active {
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .fade-enter-to {

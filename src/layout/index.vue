@@ -1,23 +1,37 @@
 <template>
   <div class="layout_container">
     <!-- 左侧菜单 -->
-    <div class="layout_slider" :class="{ fold: layOutSettingStore.fold ? true : false }">
+    <div
+      class="layout_slider"
+      :class="{ fold: layOutSettingStore.fold ? true : false }"
+    >
       <Logo></Logo>
       <el-scrollbar class="scrollbar">
-        <el-menu background-color="base-menu-background" text-color="white" active-color="base-menu-active-text-color"
-          :default-active="$route.path" :collapse="layOutSettingStore.fold ? true : false">
+        <el-menu
+          background-color="base-menu-background"
+          text-color="white"
+          active-color="base-menu-active-text-color"
+          :default-active="$route.path"
+          :collapse="layOutSettingStore.fold ? true : false"
+        >
           <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
     </div>
 
     <!-- 顶部导航 -->
-    <div class="layout_tabbar" :class="{ fold: layOutSettingStore.fold ? true : false }">
+    <div
+      class="layout_tabbar"
+      :class="{ fold: layOutSettingStore.fold ? true : false }"
+    >
       <Tabbar></Tabbar>
     </div>
 
     <!-- 内容展示区 -->
-    <div class="layout_main" :class="{ fold: layOutSettingStore.fold ? true : false }">
+    <div
+      class="layout_main"
+      :class="{ fold: layOutSettingStore.fold ? true : false }"
+    >
       <el-scrollbar class="main_scrollbar">
         <Contaner></Contaner>
       </el-scrollbar>
@@ -61,7 +75,7 @@ defineOptions({
     height: 100vh;
     background: $base-menu-background;
     color: #333;
-    transition: all .5s;
+    transition: all 0.5s;
 
     &.fold {
       width: $base-menu-min-width;
@@ -84,7 +98,7 @@ defineOptions({
     top: 0;
     left: $base-menu-width;
     z-index: 10;
-    transition: all .5s;
+    transition: all 0.5s;
     box-shadow: 0 0 5px #ccc;
 
     &.fold {
@@ -101,7 +115,7 @@ defineOptions({
     left: $base-menu-width;
     padding: 20px;
     box-sizing: border-box;
-    transition: all .5s;
+    transition: all 0.5s;
 
     &.fold {
       width: calc(100vw - $base-menu-min-width);
@@ -121,5 +135,3 @@ defineOptions({
   border: none;
 }
 </style>
-
-

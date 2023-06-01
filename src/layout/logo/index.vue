@@ -19,7 +19,6 @@ defineOptions({
   display: flex;
   align-items: center;
 
-
   img {
     width: 30px;
     height: 30px;

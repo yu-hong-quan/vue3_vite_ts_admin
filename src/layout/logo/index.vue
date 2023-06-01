@@ -7,6 +7,9 @@
 
 <script lang="ts" setup>
 import setting from '@/setting';
+defineOptions({
+  name: 'Logo',
+});
 </script>
 
 <style lang="scss" scoped>
@@ -15,17 +18,18 @@ import setting from '@/setting';
   height: $base-menu-logo-height;
   display: flex;
   align-items: center;
-  justify-content: center;
+
 
   img {
     width: 30px;
     height: 30px;
+    margin-left: 17px;
   }
 
   .title {
     color: $base-menu-title-color;
     font-size: $base-menu-title-fontSize;
-    margin-left: 20px;
+    margin-left: 17px;
     width: 175px;
     overflow: hidden;
     white-space: nowrap;

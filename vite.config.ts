@@ -12,7 +12,7 @@ import { viteMockServe } from 'vite-plugin-mock';
 import DefineOptions from 'unplugin-vue-define-options/vite';
 
 export default defineConfig(({ command, mode }) => {
-  let env = loadEnv(mode, process.cwd());//loadEnv：vite自带的方法，返回当前环境下的配置信息    mode：当前环境   process.cwd()：根目录路径
+  let env = loadEnv(mode, process.cwd()); //loadEnv：vite自带的方法，返回当前环境下的配置信息    mode：当前环境   process.cwd()：根目录路径
   return {
     // 代理跨域
     server: {
@@ -24,8 +24,8 @@ export default defineConfig(({ command, mode }) => {
           changeOrigin: true,
           // 路径重写
           rewrite: (path) => path.replace(/^\/api/, ''),
-        }
-      }
+        },
+      },
     },
     plugins: [
       vue(),

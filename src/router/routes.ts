@@ -147,7 +147,7 @@ export const constantRoute = [
     meta: {
       title: '任意路由',
       hidden: true,
-      icon: 'Ticket'
+      icon: 'Ticket',
     },
   },
 ];

@@ -38,9 +38,9 @@ let useUserStore = defineStore('User', {
     async userInfo() {
       let result = await reqUserInfo();
       if (result.code === 200) {
-        let { username, avatar } = result.data?.checkUser
-        this.userName = username
-        this.avatar = avatar
+        let { username, avatar } = result.data?.checkUser;
+        this.userName = username;
+        this.avatar = avatar;
         return 'ok';
       } else {
         return Promise.reject('获取用户信息失败');

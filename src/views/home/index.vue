@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img :src="userStore.avatar" alt="">
+    <img :src="userStore.avatar" alt="" />
     <h1>{{ userStore.userName }}</h1>
   </div>
 </template>
@@ -13,11 +13,7 @@ defineOptions({
 });
 
 let userStore = useUserStore();
-onMounted(() => {
-
-})
-
-
+onMounted(() => {});
 </script>
 
 <style lang="" scoped></style>

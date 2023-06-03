@@ -6,11 +6,11 @@ export const paramObj = (url: string) => {
   }
   return JSON.parse(
     '{"' +
-      decodeURIComponent(search)
-        .replace(/"/g, '\\"')
-        .replace(/&/g, '","')
-        .replace(/=/g, '":"') +
-      '"}',
+    decodeURIComponent(search)
+      .replace(/"/g, '\\"')
+      .replace(/&/g, '","')
+      .replace(/=/g, '":"') +
+    '"}',
   );
 };
 
@@ -39,6 +39,10 @@ export const SET_TOKEN = (token: string) => {
 export const GET_TOKEN = () => {
   return localStorage.getItem('TOKEN');
 };
+
+export const REMOVE_TOKEN = () => {
+  localStorage.removeItem('TOKEN');
+}
 
 // src动态引入本地图片  图片路径处理
 export const getAssetURL = (image: string) => {

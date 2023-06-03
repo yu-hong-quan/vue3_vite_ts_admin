@@ -139,14 +139,15 @@ export const constantRoute = [
       icon: 'DocumentDelete',
     },
   },
-  // {
-  //   path: '/:pathMatch(.*)*',
-  //   redirect: '/404',
-  //   name: 'Any',
-  //   meta: {
-  //     title: '任意路由',
-  //     hidden: true,
-  //     icon: 'Ticket'
-  //   },
-  // },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/404',
+    name: 'Any',
+    hidden: true,
+    meta: {
+      title: '任意路由',
+      hidden: true,
+      icon: 'Ticket'
+    },
+  },
 ];

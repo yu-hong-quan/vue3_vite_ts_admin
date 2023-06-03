@@ -4,4 +4,6 @@ import type { RouteRecordRaw } from 'vue-router'; //使用vue-router自带的 ro
 export interface UserState {
   token: string | null;
   menuRoutes: RouteRecordRaw[] | object;
+  userName: string,
+  avatar: string,
 }

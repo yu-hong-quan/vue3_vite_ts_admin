@@ -13,7 +13,7 @@ function createUserList() {
       roles: ['平台管理员'],
       buttons: ['cuser.detail'],
       routes: ['home'],
-      token: ' Admin Token',
+      token: 'Admin Token',
     },
     {
       userId: 2,
@@ -25,7 +25,7 @@ function createUserList() {
       roles: ['系统管理员'],
       buttons: ['cuser.detail', 'cuser.user'],
       routes: ['home'],
-      token: ' System Token',
+      token: 'System Token',
     },
   ];
 }
@@ -61,7 +61,7 @@ export default [
       const token = request.headers.token;
       //查看用户信息是否包含有次token用户
       const checkUser = createUserList().find((item) => item.token === token);
-      //没有返回失败的信息
+      //没有则返回失败的信息
       if (!checkUser) {
         return { code: 201, data: { message: ' 获取用户信息失败' } };
       }

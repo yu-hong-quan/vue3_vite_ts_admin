@@ -10,6 +10,8 @@ import '@/styles/index.scss';
 import router from './router';
 // 引入Pinia状态管理器
 import pinia from './store';
+// 引入封装的路由鉴权方法
+import './permisstion';
 
 // 获取当前环境变量
 console.log(import.meta.env);

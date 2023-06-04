@@ -1,10 +1,20 @@
 <template>
   <div class="tabbar_right">
     <el-tooltip effect="dark" content="刷新" placement="bottom">
-      <el-button size="default" icon="Refresh" circle @click="updateRefsh"></el-button>
+      <el-button
+        size="default"
+        icon="Refresh"
+        circle
+        @click="updateRefsh"
+      ></el-button>
     </el-tooltip>
     <el-tooltip effect="dark" content="全屏" placement="bottom">
-      <el-button size="default" icon="FullScreen" circle @click="fullScreen"></el-button>
+      <el-button
+        size="default"
+        icon="FullScreen"
+        circle
+        @click="fullScreen"
+      ></el-button>
     </el-tooltip>
     <el-tooltip effect="dark" content="设置" placement="bottom">
       <el-button size="default" icon="Setting" circle></el-button>
@@ -58,7 +68,6 @@ const logout = async () => {
   if (result === 'ok') {
     $router.push({ path: '/login', query: { redirect: $route.path } });
   }
-
 };
 </script>
 

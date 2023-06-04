@@ -1,13 +1,24 @@
 <template>
   <div class="tabbar_left">
-    <el-tooltip class="box-item" effect="dark" content="缩放/展开菜单" placement="bottom">
+    <el-tooltip
+      class="box-item"
+      effect="dark"
+      content="缩放/展开菜单"
+      placement="bottom"
+    >
       <el-icon size="23" @click="changeIcon">
-        <component :is="layOutSettingStore.fold ? 'Expand' : 'Fold'"></component>
+        <component
+          :is="layOutSettingStore.fold ? 'Expand' : 'Fold'"
+        ></component>
       </el-icon>
     </el-tooltip>
     <el-breadcrumb separator-icon="ArrowRight">
-      <el-breadcrumb-item v-for="(item, index) in $route.matched" :key="index" :to="{ path: item.path }"
-        v-show="item.meta.title">
+      <el-breadcrumb-item
+        v-for="(item, index) in $route.matched"
+        :key="index"
+        :to="{ path: item.path }"
+        v-show="item.meta.title"
+      >
         <el-icon style="margin: 0 5px">
           <component :is="item.meta.icon"></component>
         </el-icon>

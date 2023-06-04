@@ -13,11 +13,13 @@
     </template>
 
     <!-- 有子路由且只有一个子路由 -->
-    <template v-if="
-      item.children &&
-      item.children.length == 1 &&
-      !item.children[0].meta.hidden
-    ">
+    <template
+      v-if="
+        item.children &&
+        item.children.length == 1 &&
+        !item.children[0].meta.hidden
+      "
+    >
       <el-menu-item :index="item.children[0].path" @click="goRoute">
         <el-icon>
           <component :is="item.children[0].meta.icon"></component>
@@ -29,8 +31,14 @@
     </template>
 
     <!-- 有子路由且子路由个数大于一个 -->
-    <template v-if="item.children && item.children.length > 1 && !item.meta.hidden">
-      <el-sub-menu :index="item.path" :hide-timeout="100" popper-class="laymout_submenu_box">
+    <template
+      v-if="item.children && item.children.length > 1 && !item.meta.hidden"
+    >
+      <el-sub-menu
+        :index="item.path"
+        :hide-timeout="100"
+        popper-class="laymout_submenu_box"
+      >
         <template #title>
           <el-icon>
             <component :is="item.meta.icon"></component>
@@ -67,4 +75,3 @@ const goRoute = (vc: any) => {
   border: none;
 }
 </style>
-

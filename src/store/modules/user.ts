@@ -3,7 +3,12 @@ import { defineStore } from 'pinia';
 // 引入接口
 import { reqLogin, reqUserInfo, reqLogout } from '@/api/user';
 // 接口参数类型
-import type { loginFormData, loginResponseData, userInfoResponseData, logOutResponseData } from '@/api/user/type'
+import type {
+  loginFormData,
+  loginResponseData,
+  userInfoResponseData,
+  logOutResponseData,
+} from '@/api/user/type';
 import type { UserState } from './types/index';
 // 引入封装的本地存储工具方法
 import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/index';
@@ -53,9 +58,9 @@ let useUserStore = defineStore('User', {
         this.userName = '';
         this.avatar = '';
         REMOVE_TOKEN();
-        return 'ok'
+        return 'ok';
       } else {
-        return Promise.reject(new Error(result.message))
+        return Promise.reject(new Error(result.message));
       }
     },
   },

@@ -33,8 +33,10 @@ router.beforeEach(async (to, from, next) => {
           next();
         } catch (error) {
           // 调用查询用户信息接口，并且接口查询失败时（token过期）
-          await userStore.userLogOut();
-          next({ path: '/login', query: { redirect: to.path } });
+          let result = await userStore.userLogOut();
+          if (result === 'ok') {
+            next({ path: '/login', query: { redirect: to.path } });
+          }
         }
       }
     }

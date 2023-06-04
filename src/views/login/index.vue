@@ -1,9 +1,6 @@
 <template>
   <div class="login">
-    <SvgIcon
-      name="login_bg"
-      inlineStyle="width:100%;height:100%;position:absolute;top:0;left:0;"
-    ></SvgIcon>
+    <SvgIcon name="login_bg" inlineStyle="width:100%;height:100%;position:absolute;top:0;left:0;"></SvgIcon>
 
     <div class="login-card-box">
       <div class="login-card">
@@ -17,41 +14,18 @@
         <div class="from_box">
           <el-form ref="ruleFormRef" :model="loginData" :rules="rules">
             <el-form-item prop="username">
-              <el-input
-                :prefix-icon="User"
-                placeholder="请输入用户名"
-                maxlength="10"
-                v-model="loginData.username"
-                clearable
-              />
+              <el-input :prefix-icon="User" placeholder="请输入用户名" maxlength="10" v-model="loginData.username" clearable />
             </el-form-item>
             <el-form-item prop="password">
-              <el-input
-                type="password"
-                show-password
-                :prefix-icon="Lock"
-                placeholder="请输入密码"
-                maxlength="15"
-                v-model="loginData.password"
-                clearable
-              />
+              <el-input type="password" show-password :prefix-icon="Lock" placeholder="请输入密码" maxlength="15"
+                v-model="loginData.password" clearable />
             </el-form-item>
             <el-form-item prop="textCode">
-              <el-input
-                placeholder="请输入验证码"
-                v-model="loginData.textCode"
-                class="text_code_input"
-                clearable
-              />
+              <el-input placeholder="请输入验证码" v-model="loginData.textCode" class="text_code_input" clearable />
               <valicode ref="refresh" @getCode="getCode" />
             </el-form-item>
             <el-form-item class="btn_box">
-              <el-button
-                type="primary"
-                @click="submitForm(ruleFormRef)"
-                class="submit_btn"
-                :loading="submitLogin"
-              >
+              <el-button type="primary" @click="submitForm(ruleFormRef)" class="submit_btn" :loading="submitLogin">
                 登录
               </el-button>
               <el-button @click="resetForm(ruleFormRef)" class="reset_btn">
@@ -68,7 +42,7 @@
 
 <script lang="ts" setup>
 import { useRouter, useRoute } from 'vue-router';
-import type { loginForm } from '@/api/user/type';
+import type { loginFormData } from '@/api/user/type';
 import { User, Lock, Avatar } from '@element-plus/icons-vue';
 import { reactive, ref, onMounted } from 'vue';
 import { ElMessage, ElNotification } from 'element-plus';
@@ -85,9 +59,9 @@ let $router = useRouter();
 let $route = useRoute();
 let userStore = userUserStore();
 let ruleFormRef = ref<FormInstance>();
-let loginData = reactive<loginForm>({
-  username: '',
-  password: '',
+let loginData = reactive<loginFormData>({//默认账号密码：admin  atguigu123
+  username: 'admin',
+  password: 'atguigu123',
   textCode: '',
 });
 let submitLogin = ref<boolean>(false);
@@ -152,37 +126,36 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
       submitLogin.value = true;
-      // 使用延时器，模拟请求回调时长
-      setTimeout(() => {
-        userStore
-          .userLogin(loginData)
-          .then((resolve) => {
-            if (resolve == 'ok') {
-              let path = $route.query.redirect;
-              if (typeof path === 'string') {
-                //通过判断 解决 path参数值类型报错问题，告诉TS 这个值只能等于string类型
-                $router.push(path);
-              } else {
-                $router.push('/');
-              }
-              submitLogin.value = false;
-              ElNotification({
-                type: 'success',
-                title: `Hi，${getTime()}`,
-                message: '欢迎回来',
-              });
+      userStore
+        .userLogin(loginData)
+        .then((resolve) => {
+          console.log(resolve);
+
+          if (resolve == 'ok') {
+            let path = $route.query.redirect;
+            if (typeof path === 'string') {
+              //通过判断 解决 path参数值类型报错问题，告诉TS 这个值只能等于string类型
+              $router.push(path);
+            } else {
+              $router.push('/');
             }
-          })
-          .catch((error) => {
-            ElNotification({
-              type: 'error',
-              message: (error as Error).message,
-            });
-            refresh.value?.refresh();
-            loginData.textCode = '';
             submitLogin.value = false;
+            ElNotification({
+              type: 'success',
+              title: `Hi，${getTime()}`,
+              message: '欢迎回来',
+            });
+          }
+        })
+        .catch((error) => {
+          ElNotification({
+            type: 'error',
+            message: (error as Error).message,
           });
-      }, 300);
+          refresh.value?.refresh();
+          loginData.textCode = '';
+          submitLogin.value = false;
+        });
     } else {
       console.log(fields);
     }
@@ -225,27 +198,19 @@ onMounted(() => {
   // background: url(@/assets/images/login_background.jpg) no-repeat;
   // background-size: 100% 100%;
   background-color: #e493d0;
-  background-image: radial-gradient(
-      closest-side,
+  background-image: radial-gradient(closest-side,
       rgba(235, 105, 78, 1),
-      rgba(235, 105, 78, 0)
-    ),
+      rgba(235, 105, 78, 0)),
     radial-gradient(closest-side, rgb(77, 213, 223), rgba(243, 11, 164, 0)),
-    radial-gradient(
-      closest-side,
+    radial-gradient(closest-side,
       rgba(254, 234, 131, 1),
-      rgba(254, 234, 131, 0)
-    ),
-    radial-gradient(
-      closest-side,
+      rgba(254, 234, 131, 0)),
+    radial-gradient(closest-side,
       rgba(170, 142, 245, 1),
-      rgba(170, 142, 245, 0)
-    ),
-    radial-gradient(
-      closest-side,
+      rgba(170, 142, 245, 0)),
+    radial-gradient(closest-side,
       rgba(248, 192, 147, 1),
-      rgba(248, 192, 147, 0)
-    );
+      rgba(248, 192, 147, 0));
   background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax,
     110vmax 110vmax, 90vmax 90vmax;
   background-position: -80vmax -80vmax, 60vmax -30vmax, 10vmax 10vmax,
@@ -254,6 +219,7 @@ onMounted(() => {
   animation: 3s movement linear infinite;
 
   @keyframes movement {
+
     0%,
     100% {
       background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax,

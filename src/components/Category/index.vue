@@ -1,51 +1,74 @@
 <template>
-    <el-form :inline="true">
-        <el-form-item label="一级分类">
-            <el-select v-model="categoryStore.c1Id" @change="handlerC1Change" :disabled="scene == 0 ? false : true">
-                <el-option v-for="c1 in categoryStore.c1Arr" :key="c1.id" :label="c1.name" :value="c1.id"></el-option>
-            </el-select>
-        </el-form-item>
-        <el-form-item label="二级分类">
-            <el-select v-model="categoryStore.c2Id" @change="handlerC2Change" :disabled="scene == 0 ? false : true">
-                <el-option v-for="c2 in categoryStore.c2Arr" :key="c2.id" :label="c2.name" :value="c2.id"></el-option>
-            </el-select>
-        </el-form-item>
-        <el-form-item label="三级分类">
-            <el-select v-model="categoryStore.c3Id" :disabled="scene == 0 ? false : true">
-                <el-option v-for="c3 in categoryStore.c3Arr" :key="c3.id" :label="c3.name" :value="c3.id"></el-option>
-            </el-select>
-        </el-form-item>
-    </el-form>
+  <el-form :inline="true">
+    <el-form-item label="一级分类">
+      <el-select
+        v-model="categoryStore.c1Id"
+        @change="handlerC1Change"
+        :disabled="scene == 0 ? false : true"
+      >
+        <el-option
+          v-for="c1 in categoryStore.c1Arr"
+          :key="c1.id"
+          :label="c1.name"
+          :value="c1.id"
+        ></el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item label="二级分类">
+      <el-select
+        v-model="categoryStore.c2Id"
+        @change="handlerC2Change"
+        :disabled="scene == 0 ? false : true"
+      >
+        <el-option
+          v-for="c2 in categoryStore.c2Arr"
+          :key="c2.id"
+          :label="c2.name"
+          :value="c2.id"
+        ></el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item label="三级分类">
+      <el-select
+        v-model="categoryStore.c3Id"
+        :disabled="scene == 0 ? false : true"
+      >
+        <el-option
+          v-for="c3 in categoryStore.c3Arr"
+          :key="c3.id"
+          :label="c3.name"
+          :value="c3.id"
+        ></el-option>
+      </el-select>
+    </el-form-item>
+  </el-form>
 </template>
 
 <script lang="ts" setup>
 import { onMounted } from 'vue';
-import useCategoryStore from '@/store/modules/category'
-let categoryStore = useCategoryStore()
+import useCategoryStore from '@/store/modules/category';
+let categoryStore = useCategoryStore();
 
-defineProps(['scene'])
+defineProps(['scene']);
 
 onMounted(() => {
-    getC1()
-})
+  getC1();
+});
 
 const getC1 = () => {
-    categoryStore.getC1()
-}
+  categoryStore.getC1();
+};
 
 const handlerC1Change = () => {
-    categoryStore.c2Id = '';
-    categoryStore.c3Id = '';
-    categoryStore.c3Arr = []
-    categoryStore.getC2()
-}
+  categoryStore.c2Id = '';
+  categoryStore.c3Id = '';
+  categoryStore.c3Arr = [];
+  categoryStore.getC2();
+};
 const handlerC2Change = () => {
-    categoryStore.c3Id = '';
-    categoryStore.getC3()
-}
-
+  categoryStore.c3Id = '';
+  categoryStore.getC3();
+};
 </script>
 
-<style lang="" scoped>
-
-</style>
+<style lang="" scoped></style>

@@ -1,8 +1,10 @@
 import SvgIcon from '@/components/SvgIcon/index.vue';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
+import Category from '@/components/Category/index.vue';
 // 全局对象
 const allGloablComponent = {
   SvgIcon,
+  Category
 };
 
 // 对外暴露自定义插件对象

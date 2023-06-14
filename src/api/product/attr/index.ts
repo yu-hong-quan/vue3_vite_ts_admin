@@ -12,7 +12,7 @@ enum API {
   C3_URL = '/admin/product/getCategory3/',
   ATTR_URL = '/admin/product/attrInfoList/',
   ADDORUPDATE_URL = '/admin/product/saveAttrInfo',
-  DELETEATTR_URL = '/admin/product/deleteAttr/'
+  DELETEATTR_URL = '/admin/product/deleteAttr/',
 }
 
 // 获取一级分类的接口方法
@@ -37,4 +37,5 @@ export const reqAttr = (
 export const reqAddOrUpdateAttr = (data: AttrDataObj) =>
   request.post<string, any>(API.ADDORUPDATE_URL, data);
 // 删除属性
-export const reqRemoveAttr = (attrId: number) => request.delete<string, any>(API.DELETEATTR_URL + attrId)
+export const reqRemoveAttr = (attrId: number) =>
+  request.delete<string, any>(API.DELETEATTR_URL + attrId);

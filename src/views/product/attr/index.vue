@@ -6,18 +6,52 @@
     </el-card>
     <el-card style="margin-top: 20px">
       <div v-show="scene == 0">
-        <el-button type="primary" size="default" icon="Plus" :disabled="!categoryStore.c3Id" @click="addAttr">
+        <el-button
+          type="primary"
+          size="default"
+          icon="Plus"
+          :disabled="!categoryStore.c3Id"
+          @click="addAttr"
+        >
           添加属性
         </el-button>
-        <el-table :data="attrArr" v-loading="loading" border style="margin: 10px 0">
-          <el-table-column label="序号" type="index" width="100" align="center"></el-table-column>
-          <el-table-column label="三级分类id" width="100" prop="categoryId" align="center"></el-table-column>
-          <el-table-column label="属性id" width="100" prop="id" align="center"></el-table-column>
-          <el-table-column label="属性名称" width="200" prop="attrName"></el-table-column>
+        <el-table
+          :data="attrArr"
+          v-loading="loading"
+          border
+          style="margin: 10px 0"
+        >
+          <el-table-column
+            label="序号"
+            type="index"
+            width="100"
+            align="center"
+          ></el-table-column>
+          <el-table-column
+            label="三级分类id"
+            width="100"
+            prop="categoryId"
+            align="center"
+          ></el-table-column>
+          <el-table-column
+            label="属性id"
+            width="100"
+            prop="id"
+            align="center"
+          ></el-table-column>
+          <el-table-column
+            label="属性名称"
+            width="200"
+            prop="attrName"
+          ></el-table-column>
           <el-table-column label="属性值名称">
             <template #="{ row }">
               <div>
-                <el-tag class="tag_item" type="success" v-for="item in row.attrValueList">
+                <el-tag
+                  class="tag_item"
+                  type="success"
+                  v-for="item in row.attrValueList"
+                >
                   {{ item.valueName }}
                 </el-tag>
               </div>
@@ -25,11 +59,24 @@
           </el-table-column>
           <el-table-column label="操作" width="200">
             <template #="{ row }">
-              <el-button type="primary" size="small" icon="Edit" @click="updateAttr(row)"></el-button>
-              <el-popconfirm title="你确认删除吗?" confirm-button-text="确认" cancel-button-text="取消"
-                @confirm="deleteAttr(row.id)">
+              <el-button
+                type="primary"
+                size="small"
+                icon="Edit"
+                @click="updateAttr(row)"
+              ></el-button>
+              <el-popconfirm
+                title="你确认删除吗?"
+                confirm-button-text="确认"
+                cancel-button-text="取消"
+                @confirm="deleteAttr(row.id)"
+              >
                 <template #reference>
-                  <el-button type="primary" size="small" icon="Delete"></el-button>
+                  <el-button
+                    type="primary"
+                    size="small"
+                    icon="Delete"
+                  ></el-button>
                 </template>
               </el-popconfirm>
             </template>
@@ -39,32 +86,66 @@
       <div v-show="scene == 1">
         <el-form :inline="true">
           <el-form-item label="属性名称">
-            <el-input placeholder="请输入属性名称" v-model="attrParams.attrName"></el-input>
+            <el-input
+              placeholder="请输入属性名称"
+              v-model="attrParams.attrName"
+            ></el-input>
           </el-form-item>
         </el-form>
-        <el-button type="primary" size="default" icon="Plus" :disabled="!attrParams.attrName" @click="addAttrValue">
+        <el-button
+          type="primary"
+          size="default"
+          icon="Plus"
+          :disabled="!attrParams.attrName"
+          @click="addAttrValue"
+        >
           添加属性值
         </el-button>
         <el-button type="primary" size="default" @click="cancel">
           取消
         </el-button>
-        <el-table border style="margin: 10px 0" :data="attrParams.attrValueList">
-          <el-table-column width="100" type="index" align="center" label="序号"></el-table-column>
+        <el-table
+          border
+          style="margin: 10px 0"
+          :data="attrParams.attrValueList"
+        >
+          <el-table-column
+            width="100"
+            type="index"
+            align="center"
+            label="序号"
+          ></el-table-column>
           <el-table-column label="属性值名称">
             <template #="{ row, $index }">
-              <el-input v-if="row.flag" @blur="toLook(row, $index)" placeholder="请输入属性值名称" v-model="row.valueName"
-                :ref="(vc: any) => inputArr[$index] = vc"></el-input>
-              <div @click="toEdit(row, $index)" style="cursor: pointer;" v-else>{{ row.valueName }}</div>
+              <el-input
+                v-if="row.flag"
+                @blur="toLook(row, $index)"
+                placeholder="请输入属性值名称"
+                v-model="row.valueName"
+                :ref="(vc: any) => inputArr[$index] = vc"
+              ></el-input>
+              <div @click="toEdit(row, $index)" style="cursor: pointer" v-else>
+                {{ row.valueName }}
+              </div>
             </template>
           </el-table-column>
           <el-table-column label="属性值操作" width="200">
             <template #="{ $index }">
-              <el-button type="primary" size="small" icon="Delete"
-                @click="attrParams.attrValueList.splice($index, 1)"></el-button>
+              <el-button
+                type="primary"
+                size="small"
+                icon="Delete"
+                @click="attrParams.attrValueList.splice($index, 1)"
+              ></el-button>
             </template>
           </el-table-column>
         </el-table>
-        <el-button type="primary" size="default" :disabled="attrParams.attrValueList.length < 1" @click="save">
+        <el-button
+          type="primary"
+          size="default"
+          :disabled="attrParams.attrValueList.length < 1"
+          @click="save"
+        >
           保存
         </el-button>
         <el-button type="primary" size="default" @click="cancel">
@@ -76,7 +157,14 @@
 </template>
 
 <script lang="ts" setup>
-import { watch, ref, onMounted, reactive, nextTick, onBeforeUnmount } from 'vue';
+import {
+  watch,
+  ref,
+  onMounted,
+  reactive,
+  nextTick,
+  onBeforeUnmount,
+} from 'vue';
 import type {
   AttrResponseData,
   AttrDataObj,
@@ -133,7 +221,7 @@ const addAttrValue = () => {
   });
   nextTick(() => {
     inputArr.value[attrParams.attrValueList.length - 1].focus();
-  })
+  });
 };
 
 const deleteAttr = async (attrId: number) => {
@@ -207,7 +295,7 @@ const toEdit = (row: attrValueType, $index: number) => {
   row.flag = true;
   nextTick(() => {
     inputArr.value[$index].focus();
-  })
+  });
 };
 
 onMounted(() => {
@@ -220,7 +308,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   // 一次性重置属性仓库里的全部state值
   categoryStore.$reset();
-})
+});
 
 watch(
   () => categoryStore.c3Id,

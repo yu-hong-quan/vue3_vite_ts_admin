@@ -5,14 +5,27 @@
         添加品牌
       </el-button>
 
-      <el-table :data="trademarkArr" border style="margin: 10px 0" height="655" v-loading="loading">
+      <el-table
+        :data="trademarkArr"
+        border
+        style="margin: 10px 0"
+        height="655"
+        v-loading="loading"
+      >
         <el-table-column prop="id" label="品牌ID" width="80" align="center" />
         <el-table-column prop="tmName" label="品牌名称" />
         <el-table-column prop="logoUrl" label="品牌logo">
           <template #="{ row }">
             <el-tooltip effect="dark" content="点击预览图片" placement="right">
-              <el-image :preview-src-list="[row.logoUrl]" style="width: 100px; height: 100px" :src="row.logoUrl"
-                :zoom-rate="1" :initial-index="4" fit="scale-down" :preview-teleported="true" />
+              <el-image
+                :preview-src-list="[row.logoUrl]"
+                style="width: 100px; height: 100px"
+                :src="row.logoUrl"
+                :zoom-rate="1"
+                :initial-index="4"
+                fit="scale-down"
+                :preview-teleported="true"
+              />
             </el-tooltip>
           </template>
         </el-table-column>
@@ -21,12 +34,20 @@
         <el-table-column prop="date" label="品牌操作">
           <template #="{ row }">
             <el-tooltip effect="dark" content="修改" placement="bottom">
-              <el-button type="primary" icon="Edit" @click="updateTrademark(row)"></el-button>
+              <el-button
+                type="primary"
+                icon="Edit"
+                @click="updateTrademark(row)"
+              ></el-button>
             </el-tooltip>
             <el-tooltip effect="dark" content="删除" placement="bottom">
               <span style="margin-left: 10px">
-                <el-popconfirm title="你确认删除吗?" confirm-button-text="确认" cancel-button-text="取消"
-                  @confirm="deleteTrademark(row)">
+                <el-popconfirm
+                  title="你确认删除吗?"
+                  confirm-button-text="确认"
+                  cancel-button-text="取消"
+                  @confirm="deleteTrademark(row)"
+                >
                   <template #reference>
                     <el-button type="primary" icon="Delete"></el-button>
                   </template>
@@ -36,19 +57,51 @@
           </template>
         </el-table-column>
       </el-table>
-      <el-pagination v-model:current-page="pageNo" v-model:page-size="limit" :page-sizes="[5, 10, 30, 50]" :small="false"
-        :page-count="pagesCount" :disabled="false" :background="true" layout="prev, pager, next, jumper,->, sizes,total "
-        :total="totalNum" @size-change="handleSizeChange" @current-change="changePageNo" />
+      <el-pagination
+        v-model:current-page="pageNo"
+        v-model:page-size="limit"
+        :page-sizes="[5, 10, 30, 50]"
+        :small="false"
+        :page-count="pagesCount"
+        :disabled="false"
+        :background="true"
+        layout="prev, pager, next, jumper,->, sizes,total "
+        :total="totalNum"
+        @size-change="handleSizeChange"
+        @current-change="changePageNo"
+      />
     </el-card>
-    <el-dialog v-model="dialogFromVisible" :title="trademarkParams.id ? '修改品牌' : '添加品牌'" width="700px">
-      <el-form style="width: 50%" label-width="100px" ref="ruleFormRef" :model="trademarkParams" :rules="rules">
+    <el-dialog
+      v-model="dialogFromVisible"
+      :title="trademarkParams.id ? '修改品牌' : '添加品牌'"
+      width="700px"
+    >
+      <el-form
+        style="width: 50%"
+        label-width="100px"
+        ref="ruleFormRef"
+        :model="trademarkParams"
+        :rules="rules"
+      >
         <el-form-item label="品牌名称" prop="tmName">
-          <el-input placeholder="请输入品牌名称" v-model="trademarkParams.tmName"></el-input>
+          <el-input
+            placeholder="请输入品牌名称"
+            v-model="trademarkParams.tmName"
+          ></el-input>
         </el-form-item>
         <el-form-item label="品牌logo" prop="logoUrl">
-          <el-upload class="avatar-uploader" action="/api/admin/product/fileUpload" :show-file-list="false"
-            :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
-            <img v-if="trademarkParams.logoUrl" :src="trademarkParams.logoUrl" class="avatar" />
+          <el-upload
+            class="avatar-uploader"
+            action="/api/admin/product/fileUpload"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload"
+          >
+            <img
+              v-if="trademarkParams.logoUrl"
+              :src="trademarkParams.logoUrl"
+              class="avatar"
+            />
             <el-icon v-else class="avatar-uploader-icon">
               <Plus />
             </el-icon>

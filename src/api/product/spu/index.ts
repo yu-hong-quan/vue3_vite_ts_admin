@@ -6,7 +6,7 @@ import type {
   SpuHasImg,
   SpuAttrResponseData,
   HasSaleAttrResponseData,
-  SpuData
+  SpuData,
 } from './type';
 
 enum API {
@@ -16,7 +16,7 @@ enum API {
   SPUHASSALEATTR_URL = '/admin/product/spuSaleAttrList/',
   ALLSALEATTR_URL = '/admin/product/baseSaleAttrList',
   ADDSPU_URL = '/admin/product/saveSpuInfo',
-  UPDATESPU_URL = '/admin/product/updateSpuInfo'
+  UPDATESPU_URL = '/admin/product/updateSpuInfo',
 }
 
 // 获取某一个三级分类下已有的SPU数据
@@ -43,9 +43,8 @@ export const reqAllSaleAttr = () =>
 // 添加/修改SPU
 export const reqAddOrUpdateSpu = (data: SpuData) => {
   if (data.id) {
-    return request.post<string, any>(API.UPDATESPU_URL, data)
+    return request.post<string, any>(API.UPDATESPU_URL, data);
   } else {
-    return request.post<string, any>(API.ADDSPU_URL, data)
+    return request.post<string, any>(API.ADDSPU_URL, data);
   }
-}
-
+};

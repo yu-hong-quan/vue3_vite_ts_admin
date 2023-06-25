@@ -9,9 +9,9 @@ export interface SpuData {
   spuName: string;
   description: string;
   category3Id: string | number;
-  tmId: number;
-  spuSaleAttrList: null;
-  spuImageList: null;
+  tmId: number | string;
+  spuImageList: null | SpuImg[];
+  spuSaleAttrList: null | SaleAttr[];
 }
 
 export type Records = SpuData[];
@@ -38,10 +38,10 @@ export interface AllTradeMark extends ResponseData {
 }
 
 export interface SpuImg {
-  id: number;
-  createTime: string;
-  updateTime: string;
-  spuId: number;
+  id?: number;
+  createTime?: string;
+  updateTime?: string;
+  spuId?: number;
   imgName: string;
   imgUrl: string;
 }
@@ -52,9 +52,9 @@ export interface SpuHasImg extends ResponseData {
 
 export interface SaleAttr {
   id?: number;
-  createTime: string;
-  updateTime: string;
-  spuId: number;
+  createTime?: string;
+  updateTime?: string;
+  spuId?: number;
   baseSaleAttrId: number;
   saleAttrName: string;
   spuSaleAttrValueList: SpuSaleAttrValueList;
@@ -64,13 +64,13 @@ export type SpuSaleAttrValueList = SaleAttr[];
 
 export interface SaleAttrValue {
   id?: number;
-  createTime: string;
-  updateTime: string;
-  spuId: number;
+  createTime?: string;
+  updateTime?: string;
+  spuId?: number;
   baseSaleAttrId: number;
   saleAttrValueName: string;
   saleAttrName: string;
-  isChecked: string;
+  isChecked?: string;
 }
 
 export interface SpuAttrResponseData extends ResponseData {

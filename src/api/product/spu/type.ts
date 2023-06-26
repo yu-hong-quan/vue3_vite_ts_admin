@@ -42,8 +42,10 @@ export interface SpuImg {
   createTime?: string;
   updateTime?: string;
   spuId?: number;
-  imgName: string;
-  imgUrl: string;
+  imgName?: string;
+  imgUrl?: string;
+  name?: string,
+  url?: string
 }
 
 export interface SpuHasImg extends ResponseData {
@@ -55,9 +57,12 @@ export interface SaleAttr {
   createTime?: string;
   updateTime?: string;
   spuId?: number;
-  baseSaleAttrId: number;
+  baseSaleAttrId: number | string;
   saleAttrName: string;
+  saleAttrValueName?: string;
   spuSaleAttrValueList: SpuSaleAttrValueList;
+  flag?: boolean;
+  saleAttrValue?: string,
 }
 
 export type SpuSaleAttrValueList = SaleAttr[];
@@ -67,9 +72,9 @@ export interface SaleAttrValue {
   createTime?: string;
   updateTime?: string;
   spuId?: number;
-  baseSaleAttrId: number;
+  baseSaleAttrId: number | string;
   saleAttrValueName: string;
-  saleAttrName: string;
+  saleAttrName?: string;
   isChecked?: string;
 }
 

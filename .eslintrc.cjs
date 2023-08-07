@@ -31,6 +31,7 @@ module.exports = {
     ],
     // eslint规则配置
     "rules": {
+        "allowSyntheticDefaultImports": "off",
         /*
         * 'off' 或0 ==> 关闭规则
         * 'warn' 或1 ==> 打开的规则作为警告(不影响代码执行)

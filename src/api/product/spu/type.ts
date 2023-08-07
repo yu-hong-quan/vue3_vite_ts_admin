@@ -65,7 +65,7 @@ export interface SaleAttr {
   saleAttrValue?: string;
 }
 
-export type SpuSaleAttrValueList = SaleAttr[];
+export type SpuSaleAttrValueList = SaleAttrValue[];
 
 export interface SaleAttrValue {
   id?: number;

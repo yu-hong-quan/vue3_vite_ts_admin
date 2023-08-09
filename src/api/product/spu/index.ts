@@ -8,7 +8,7 @@ import type {
   HasSaleAttrResponseData,
   SpuData,
   SkuData,
-  SkuInfoData
+  SkuInfoData,
 } from './type';
 
 enum API {
@@ -54,8 +54,11 @@ export const reqAddOrUpdateSpu = (data: SpuData) => {
   }
 };
 // 添加SKU
-export const reqAddSku = (data: SkuData) => request.post<string, any>(API.ADDSKU_URL, data);
+export const reqAddSku = (data: SkuData) =>
+  request.post<string, any>(API.ADDSKU_URL, data);
 // 查看某一个已有的SPU下的SKU
-export const reqSkuInfo = (spuId: number | string) => request.get<string, SkuInfoData>(API.SKUINFO_URL + spuId);
+export const reqSkuInfo = (spuId: number | string) =>
+  request.get<string, SkuInfoData>(API.SKUINFO_URL + spuId);
 // 删除已有的SPU
-export const reqRemoveSpu = (spuId: number | string) => request.delete<string, any>(API.DELETESPU_URL + spuId);
+export const reqRemoveSpu = (spuId: number | string) =>
+  request.delete<string, any>(API.DELETESPU_URL + spuId);

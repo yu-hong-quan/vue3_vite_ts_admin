@@ -92,28 +92,28 @@ export interface HasSaleAttrResponseData extends ResponseData {
 }
 
 export interface Attr {
-  attrId: number | string,
-  valueId: number | string
+  attrId: number | string;
+  valueId: number | string;
 }
 
 export interface saleAttr {
-  saleAttrId: number | string,
-  saleAttrValueId: number | string
+  saleAttrId: number | string;
+  saleAttrValueId: number | string;
 }
 
 export interface SkuData {
-  category3Id: string | number,
-  spuId: string | number,
-  tmId: string | number,
-  skuName: string,
-  price: string | number,
-  weight: string | number,
-  skuDesc: string,
-  skuAttrValueList: Attr[],
-  skuSaleAttrValueList: saleAttr[],
-  skuDefaultImg: string
+  category3Id: string | number;
+  spuId: string | number;
+  tmId: string | number;
+  skuName: string;
+  price: string | number;
+  weight: string | number;
+  skuDesc: string;
+  skuAttrValueList: Attr[];
+  skuSaleAttrValueList: saleAttr[];
+  skuDefaultImg: string;
 }
 
 export interface SkuInfoData extends ResponseData {
-  data: SkuData[]
+  data: SkuData[];
 }

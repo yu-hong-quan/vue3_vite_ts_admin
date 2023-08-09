@@ -45,7 +45,7 @@ module.exports = {
         'no-useless-escape': 'off', //禁止不必 要的转义字符
 
         // typeScript (https ://typescript -eslint . io/rules)
-        '@typescript-eslint/no-unused-vars': 'error', //禁止定义未使用的变量
+        '@typescript-eslint/no-unused-vars': 'warn', //禁止定义未使用的变量
         '@typescript-eslint/prefer-ts-expect-error': 'error', //禁止使用 @ts-ignore
         '@typescript-eslint/no-explicit-any': 'off', //禁止使用any类型
         '@typescript-eslint/ no-non-null-assertion': 'off',

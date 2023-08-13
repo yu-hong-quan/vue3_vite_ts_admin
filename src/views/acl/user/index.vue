@@ -1,17 +1,205 @@
 <template>
-  <div class="user_box">
-    <h1>用户管理</h1>
-  </div>
+  <el-card style="height: 80px;">
+    <el-form :inline="true" class="form">
+      <el-form-item label="用户名:">
+        <el-input placeholder="请输入搜索用户名" v-model="username"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" size="default" @click="getHasUser">搜索</el-button>
+        <el-button type="primary" size="default" @click="resetFind">重置</el-button>
+      </el-form-item>
+    </el-form>
+  </el-card>
+  <el-card style="margin-top:15px;">
+    <el-button type="primary" size="default" @click="addUser">添加用户</el-button>
+    <el-button type="danger" size="default">批量删除</el-button>
+    <el-table :data="userData" border v-loading="dataLoding" style="margin:10px 0;">
+      <el-table-column type="selection" width="55"></el-table-column>
+      <el-table-column label="#" align="center" type="index"></el-table-column>
+      <el-table-column label="ID" prop="id" align="center"></el-table-column>
+      <el-table-column label="用户名" prop="username" align="center"></el-table-column>
+      <el-table-column label="用户昵称" prop="name" align="center"></el-table-column>
+      <el-table-column label="用户角色" prop="roleName" show-overflow-tooltip align="center"></el-table-column>
+      <el-table-column label="创建时间" prop="createTime" align="center"></el-table-column>
+      <el-table-column label="更新时间" prop="updateTime" align="center"></el-table-column>
+      <el-table-column label="操作" align="center" width="240" fixed="right">
+        <template #="{ row }">
+          <el-button type="primary" size="small" icon="User">分配角色</el-button>
+          <el-button type="primary" size="small" icon="Edit" @click="ediltUser(row)">编辑用户</el-button>
+          <el-button type="danger" size="small" icon="Delete" style="margin-top:5px;">删除用户</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+    <el-pagination v-model:current-page="pageNo" v-model:page-size="pageSize" :page-sizes="[5, 10, 20, 30, 50]"
+      :background="true" layout="prev, pager, next, jumper,->,sizes, total," :total="total" @current-change="getHasUser"
+      @size-change="handleSelectPage" />
+  </el-card>
+  <el-drawer v-model="drawer">
+    <template #header>
+      <h4>添加用户</h4>
+    </template>
+    <template #default>
+      <el-form label-width="100" :rules="rules" ref="formRef" :model="userParams">
+        <el-form-item label="用户名" prop="username">
+          <el-input placeholder="请输入用户名" v-model="userParams.username"></el-input>
+        </el-form-item>
+        <el-form-item label="用户昵称" prop="name">
+          <el-input placeholder="请输入昵称" v-model="userParams.name"></el-input>
+        </el-form-item>
+        <el-form-item label="用户密码" prop="password">
+          <el-input placeholder="请输入用户密码" v-model="userParams.password"></el-input>
+        </el-form-item>
+      </el-form>
+      <div class="drawer_footer">
+        <el-button @click="cancel">取消</el-button>
+        <el-button type="primary" @click="saveConmit">确定</el-button>
+      </div>
+    </template>
+  </el-drawer>
 </template>
 
 <script lang="ts" setup>
+import { ref, onMounted, reactive, nextTick } from 'vue';
+import type { FormInstance, FormRules } from 'element-plus';
+import { UserResponseData, Records, User, RestUser } from '@/api/acl/user/type'
+import { reqUserInfo, reqAddOrUpdateUser } from '@/api/acl/user/index'
+import { ElMessage } from 'element-plus';
+let username = ref<string>('');
+let pageNo = ref<number>(1);
+let pageSize = ref<number>(5);
+let total = ref<number>(0);
+let dataLoding = ref<boolean>(false);
+let userData = ref<Records>([]);
+let drawer = ref<boolean>(false);
+let userParams = reactive<RestUser>({
+  username: '',
+  name: '',
+  password: ''
+})
+let formRef = ref<FormInstance>();
+
+const validatorUsername = (rule: any, value: string, callback: any) => {
+  console.log(rule, value);
+  if (value && value.trim().length >= 5) {
+    callback();
+  } else {
+    callback(new Error('用户名至少为5位'))
+  }
+}
+const validatorName = (rule: any, value: string, callback: any) => {
+  console.log(rule);
+  if (value && value.trim().length >= 5) {
+    callback();
+  } else {
+    callback(new Error('用户昵称至少为5位'))
+  }
+}
+const validatorPassword = (rule: any, value: string, callback: any) => {
+  console.log(rule);
+  if (value && value.trim().length >= 6) {
+    callback();
+  } else {
+    callback(new Error('密码至少为6位'))
+  }
+}
+const rules = reactive<FormRules>({
+  username: [
+    { required: true, trigger: 'blur', message: '用户名至少为5位', validator: validatorUsername }
+  ],
+  name: [
+    { required: true, trigger: 'blur', message: '用户昵称至少为5位', validator: validatorName }
+  ],
+  password: [
+    { required: true, trigger: 'blur', message: '密码至少为6位', validator: validatorPassword }
+  ],
+})
+
+
+const getHasUser = async (pager = 1) => {
+  dataLoding.value = true;
+  pageNo.value = pager;
+  let result: UserResponseData = await reqUserInfo(pageNo.value, pageSize.value);
+  if (result.code === 200) {
+    total.value = result.data.total;
+    userData.value = result.data.records;
+    dataLoding.value = false;
+  } else {
+    dataLoding.value = false;
+  }
+}
+
+const handleSelectPage = () => {
+  getHasUser()
+}
+
+const resetFind = () => {
+  username.value = '';
+  getHasUser()
+}
+
+const addUser = () => {
+  drawer.value = true;
+  // 清空表单数据
+  Object.assign(userParams, {
+    username: '',
+    name: '',
+    password: ''
+  })
+  nextTick(() => {
+    formRef.value?.clearValidate('username');
+    formRef.value?.clearValidate('name');
+    formRef.value?.clearValidate('password');
+  })
+}
+
+const ediltUser = (row: User) => {
+  console.log(row);
+  drawer.value = true;
+}
+
+const cancel = () => {
+  drawer.value = false;
+}
+
+const saveConmit = async () => {
+  let result: any = await reqAddOrUpdateUser(userParams);
+  console.log(result);
+  if (result.code === 200) {
+    drawer.value = false;
+    ElMessage({
+      type: 'success',
+      message: userParams.id ? '更新成功' : '添加成功'
+    })
+    getHasUser()
+  } else {
+    drawer.value = false;
+    ElMessage({
+      type: 'error',
+      message: userParams.id ? '更新失败' : '添加失败'
+    })
+  }
+}
+
+onMounted(() => {
+  getHasUser()
+})
+
 defineOptions({
   name: 'user',
 });
 </script>
 
 <style lang="scss" scoped>
-.user_box {
-  background: #fff;
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawer_footer {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

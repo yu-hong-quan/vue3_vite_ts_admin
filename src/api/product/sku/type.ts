@@ -61,27 +61,27 @@ export interface SpuImg {
 }
 
 export interface SkuInfoData {
-  id: number,
-  createTime: string,
-  updateTime: string,
-  spuId: number,
-  price: number,
+  id: number;
+  createTime: string;
+  updateTime: string;
+  spuId: number;
+  price: number;
   skuAttrValueList: Attr[];
   skuSaleAttrValueList: saleAttr[];
-  skuName: string,
-  skuDesc: string,
-  weight: string | number,
-  tmId: number,
-  category3Id: number,
-  skuDefaultImg: string,
-  isSale: number,
-  skuImageList: SpuImg[]
+  skuName: string;
+  skuDesc: string;
+  weight: string | number;
+  tmId: number;
+  category3Id: number;
+  skuDefaultImg: string;
+  isSale: number;
+  skuImageList: SpuImg[];
 }
 
-export interface RestSkuInfo extends Partial<SkuInfoData> { // 关键字Partial-可选  
-
+export interface RestSkuInfo extends Partial<SkuInfoData> {
+  // 关键字Partial-可选
 }
 
 export interface SkuInfoResponse extends ResponseData {
-  data: SkuInfoData
+  data: SkuInfoData;
 }

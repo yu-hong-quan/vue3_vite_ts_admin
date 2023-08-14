@@ -16,7 +16,7 @@ export interface User {
   roleName: string;
 }
 
-export interface RestUser extends Partial<User> { }
+export interface RestUser extends Partial<User> {}
 
 export type Records = User[];
 

@@ -11,7 +11,9 @@ enum API {
 
 // 获取全部用户账号
 export const reqUserInfo = (page: number, limit: number, username: string) =>
-  request.get<string, UserResponseData>(API.ALLUSER_URL + `${page}/${limit}/?username=${username}`);
+  request.get<string, UserResponseData>(
+    API.ALLUSER_URL + `${page}/${limit}/?username=${username}`,
+  );
 
 // 添加用户与修改用户
 export const reqAddOrUpdateUser = (data: RestUser) => {
@@ -23,7 +25,9 @@ export const reqAddOrUpdateUser = (data: RestUser) => {
 };
 
 // 删除用户
-export const reqRemoveUser = (id: number) => request.delete<string, any>(API.REMOVEUSER_URL + id);
+export const reqRemoveUser = (id: number) =>
+  request.delete<string, any>(API.REMOVEUSER_URL + id);
 
 // 批量删除用户
-export const reqRemoveAllUser = (idList: number[]) => request.delete<string, any>(API.REMOVEALLUSER_URL, { data: idList });
+export const reqRemoveAllUser = (idList: number[]) =>
+  request.delete<string, any>(API.REMOVEALLUSER_URL, { data: idList });

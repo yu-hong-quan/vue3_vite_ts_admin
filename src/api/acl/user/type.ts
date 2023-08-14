@@ -6,7 +6,7 @@ export interface ResponseData {
 }
 
 export interface User {
-  id: number;
+  id: number | string;
   createTime: string;
   updateTime: string;
   username: string;
@@ -16,7 +16,7 @@ export interface User {
   roleName: string;
 }
 
-export interface RestUser extends Partial<User> {}
+export interface RestUser extends Partial<User> { }
 
 export type Records = User[];
 

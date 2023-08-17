@@ -1,5 +1,10 @@
 import request from '@/utils/request';
-import type { UserResponseData, RestUser, AllRoleResponseData, SetRoleData } from './type';
+import type {
+  UserResponseData,
+  RestUser,
+  AllRoleResponseData,
+  SetRoleData,
+} from './type';
 
 enum API {
   ALLUSER_URL = '/admin/acl/user/',
@@ -35,7 +40,9 @@ export const reqRemoveAllUser = (idList: number[]) =>
   request.delete<string, any>(API.REMOVEALLUSER_URL, { data: idList });
 
 // 获取全部职位以及包含当前用户的已有职位
-export const reqAllRole = (userId: number) => request.get<string, AllRoleResponseData>(API.ALLROLE_URL + userId);
+export const reqAllRole = (userId: number) =>
+  request.get<string, AllRoleResponseData>(API.ALLROLE_URL + userId);
 
 // 分配职务
-export const reqSetUserRole = (data: SetRoleData) => request.post<string, any>(API.SETROLE_URL, data);
+export const reqSetUserRole = (data: SetRoleData) =>
+  request.post<string, any>(API.SETROLE_URL, data);

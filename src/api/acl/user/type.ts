@@ -16,7 +16,7 @@ export interface User {
   roleName: string;
 }
 
-export interface RestUser extends Partial<User> {}
+export interface RestUser extends Partial<User> { }
 
 export type Records = User[];
 
@@ -28,4 +28,26 @@ export interface UserResponseData extends ResponseData {
     current: number;
     pages: number;
   };
+}
+
+export interface RoleData {
+  id?: number,
+  createTime?: string,
+  updateTime?: string,
+  roleName: string,
+  remark: null
+}
+
+export type AllRole = RoleData[];
+
+export interface AllRoleResponseData extends ResponseData {
+  data: {
+    assignRoles: AllRole,
+    allRolesList: AllRole
+  }
+}
+
+export interface SetRoleData {
+  roleIdList: number[],
+  userId: number
 }

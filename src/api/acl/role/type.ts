@@ -35,18 +35,18 @@ export interface RoleResponseData extends ResponseData {
 }
 
 export interface MenuData {
-  id: number,
-  createTime: string,
-  updateTime: string,
-  pid: number,
-  name: string,
-  code: string,
-  toCode: string,
-  type: number,
-  status: null,
-  level: number,
-  children?: MenuList,
-  select: boolean
+  id: number;
+  createTime: string;
+  updateTime: string;
+  pid: number;
+  name: string;
+  code: string;
+  toCode: string;
+  type: number;
+  status: null;
+  level: number;
+  children?: MenuList;
+  select: boolean;
 }
 
 export type MenuList = MenuData[];

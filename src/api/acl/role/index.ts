@@ -1,5 +1,9 @@
 import request from '@/utils/request';
-import type { RoleResponseData, ReadonlyRoleData, MenuResponseData } from './type';
+import type {
+  RoleResponseData,
+  ReadonlyRoleData,
+  MenuResponseData,
+} from './type';
 enum API {
   ALLROLE_URL = '/admin/acl/role/',
   ADDROLE_URL = '/admin/acl/role/save',
@@ -25,6 +29,10 @@ export const reqAddRoleOrUpdateRole = (data: ReadonlyRoleData) => {
 export const reqRemoveRole = (id: number) =>
   request.delete<string, any>(API.REMOVEROLE_URL + id);
 // 获取角色的权限列表
-export const reqAllPermission = (roleId: number) => request.get<string, MenuResponseData>(API.ALLPERMISSION_URL + roleId);
+export const reqAllPermission = (roleId: number) =>
+  request.get<string, MenuResponseData>(API.ALLPERMISSION_URL + roleId);
 // 给角色分配权限
-export const reqSetPermission = (roleId: number, permissionId: number) => request.get<string, any>(API.SETPERMISSION_URL + `roleId=${roleId}&permissionId=${permissionId}`)
+export const reqSetPermission = (roleId: number, permissionId: number) =>
+  request.get<string, any>(
+    API.SETPERMISSION_URL + `roleId=${roleId}&permissionId=${permissionId}`,
+  );

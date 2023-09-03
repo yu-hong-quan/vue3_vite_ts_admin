@@ -1,127 +1,50 @@
 <template>
   <div>
-    <el-card>
+    <el-card style="height: 80px">
       <!-- 三级分类组件 -->
       <Category :scene="scene" />
     </el-card>
     <el-card style="margin-top: 15px">
       <div v-show="scene == 0">
-        <el-button
-          type="primary"
-          size="default"
-          icon="Plus"
-          :disabled="!categoryStore.c3Id"
-          @click="addSpu"
-        >
+        <el-button type="primary" size="default" icon="Plus" :disabled="!categoryStore.c3Id" @click="addSpu">
           添加SPU
         </el-button>
-        <el-table
-          style="margin: 10px 0"
-          :border="true"
-          :data="records"
-          v-loading="loading"
-        >
-          <el-table-column
-            label="序号"
-            type="index"
-            align="center"
-            width="80"
-          ></el-table-column>
+        <el-table style="margin: 10px 0" :border="true" :data="records" v-loading="loading">
+          <el-table-column label="序号" type="index" align="center" width="80"></el-table-column>
           <el-table-column label="SPU名称" prop="spuName"></el-table-column>
-          <el-table-column
-            label="SPU描述"
-            prop="description"
-            show-overflow-tooltip
-          ></el-table-column>
+          <el-table-column label="SPU描述" prop="description" show-overflow-tooltip></el-table-column>
           <el-table-column label="操作">
             <template #="{ row }">
-              <el-button
-                type="primary"
-                size="small"
-                icon="Plus"
-                title="添加SKU"
-                @click="addSku(row)"
-              ></el-button>
-              <el-button
-                type="primary"
-                size="small"
-                icon="Edit"
-                title="修改SPU"
-                @click="updateSpu(row)"
-              ></el-button>
-              <el-button
-                type="primary"
-                size="small"
-                icon="View"
-                title="查看SKU列表"
-                @click="findSkuList(row)"
-              ></el-button>
-              <el-popconfirm
-                title="您是否确认删除?"
-                confirm-button-text="确认"
-                cancel-button-text="取消"
-                width="200"
-                @confirm="deleteSpu(row)"
-              >
+              <el-button type="primary" size="small" icon="Plus" title="添加SKU" @click="addSku(row)"></el-button>
+              <el-button type="primary" size="small" icon="Edit" title="修改SPU" @click="updateSpu(row)"></el-button>
+              <el-button type="primary" size="small" icon="View" title="查看SKU列表" @click="findSkuList(row)"></el-button>
+              <el-popconfirm title="您是否确认删除?" confirm-button-text="确认" cancel-button-text="取消" width="200"
+                @confirm="deleteSpu(row)">
                 <template #reference>
-                  <el-button
-                    type="danger"
-                    size="small"
-                    icon="Delete"
-                    title="删除SPU"
-                  ></el-button>
+                  <el-button type="danger" size="small" icon="Delete" title="删除SPU"></el-button>
                 </template>
               </el-popconfirm>
             </template>
           </el-table-column>
         </el-table>
-        <el-pagination
-          v-model:current-page="pageNo"
-          v-model:page-size="limit"
-          :page-sizes="[5, 10, 30, 50]"
-          :page-count="pagesCount"
-          :background="true"
-          layout="prev, pager, next, jumper,->, sizes,total "
-          :total="totalNum"
-          @size-change="handleSizeChange"
-          @current-change="getHasSpu"
-        />
+        <el-pagination v-model:current-page="pageNo" v-model:page-size="limit" :page-sizes="[5, 10, 30, 50]"
+          :page-count="pagesCount" :background="true" layout="prev, pager, next, jumper,->, sizes,total "
+          :total="totalNum" @size-change="handleSizeChange" @current-change="getHasSpu" />
       </div>
       <!-- 添加SPU | 修改SPU  子组件 -->
-      <SpuForm
-        ref="spu"
-        v-show="scene == 1"
-        @changeScene="changeScene"
-      ></SpuForm>
+      <SpuForm ref="spu" v-show="scene == 1" @changeScene="changeScene"></SpuForm>
       <!-- 添加SKU  子组件 -->
-      <SkuForm
-        ref="sku"
-        v-show="scene == 2"
-        @changeScene="changeScene"
-      ></SkuForm>
+      <SkuForm ref="sku" v-show="scene == 2" @changeScene="changeScene"></SkuForm>
       <!-- dialog对话框-展示已有的SKU数据列表 -->
       <el-dialog title="SKU列表" v-model="skuDialogShow">
-        <el-table
-          border
-          :height="skuTableHeight"
-          :data="skuArr"
-          v-loading="skuTableLoading"
-        >
+        <el-table border :height="skuTableHeight" :data="skuArr" v-loading="skuTableLoading">
           <el-table-column label="SKU名字" prop="skuName"></el-table-column>
           <el-table-column label="SKU价格" prop="price"></el-table-column>
           <el-table-column label="SKU重量" prop="weight"></el-table-column>
           <el-table-column label="SKU图片">
             <template #="{ row }">
-              <el-image
-                style="width: 100px; height: 100px"
-                :src="row.skuDefaultImg"
-                :alt="row.skuDesc"
-                :zoom-rate="1"
-                :preview-src-list="[row.skuDefaultImg]"
-                :initial-index="4"
-                fit="scale-down"
-                :preview-teleported="true"
-              />
+              <el-image style="width: 100px; height: 100px" :src="row.skuDefaultImg" :alt="row.skuDesc" :zoom-rate="1"
+                :preview-src-list="[row.skuDefaultImg]" :initial-index="4" fit="scale-down" :preview-teleported="true" />
             </template>
           </el-table-column>
         </el-table>

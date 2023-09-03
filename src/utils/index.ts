@@ -6,11 +6,11 @@ export const paramObj = (url: string) => {
   }
   return JSON.parse(
     '{"' +
-      decodeURIComponent(search)
-        .replace(/"/g, '\\"')
-        .replace(/&/g, '","')
-        .replace(/=/g, '":"') +
-      '"}',
+    decodeURIComponent(search)
+      .replace(/"/g, '\\"')
+      .replace(/&/g, '","')
+      .replace(/=/g, '":"') +
+    '"}',
   );
 };
 
@@ -19,13 +19,13 @@ export const getTime = () => {
   let message = '';
   let hours = new Date().getHours();
   if (hours <= 9) {
-    message = '早上好';
+    message = '早上好吖！';
   } else if (hours <= 12) {
-    message = '上午好';
+    message = '上午好吖！';
   } else if (hours <= 18) {
-    message = '下午好';
+    message = '下午好吖！';
   } else {
-    message = '晚上好';
+    message = '晚上好吖！';
   }
   return message;
 };

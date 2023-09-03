@@ -24,6 +24,6 @@ defineOptions({
   justify-content: space-between;
   padding: 0 12px;
   box-sizing: border-box;
-  background: #fff;
+  // background: #fff;
 }
 </style>

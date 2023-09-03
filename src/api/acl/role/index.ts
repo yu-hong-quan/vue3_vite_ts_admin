@@ -33,6 +33,6 @@ export const reqAllPermission = (roleId: number) =>
   request.get<string, MenuResponseData>(API.ALLPERMISSION_URL + roleId);
 // 给角色分配权限
 export const reqSetPermission = (roleId: number, permissionId: number) =>
-  request.get<string, any>(
+  request.post<string, any>(
     API.SETPERMISSION_URL + `roleId=${roleId}&permissionId=${permissionId}`,
   );

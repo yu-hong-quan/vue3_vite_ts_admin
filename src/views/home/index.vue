@@ -18,13 +18,13 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue';
 import useUserStore from '@/store/modules/user';
-import { getTime } from '@/utils/index'
+import { getTime } from '@/utils/index';
 defineOptions({
   name: 'home',
 });
 
 let userStore = useUserStore();
-onMounted(() => { });
+onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>

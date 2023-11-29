@@ -80,24 +80,22 @@ Vue3、TypeScript、Vite、Eslint、Prettier、StyleLintrc、Husky、CommitLint�
 
 ---
 
-## autofit.JS：可视化大屏自适应插件(支持)  
+## autofit.JS：可视化大屏自适应插件(支持)
 
 仓库地址：https://github.com/LarryZhu-dev/autofit.js
-安装：npm i autofit.js 
+安装：npm i autofit.js
 
 ---
 
-## DataV：大屏可视化UI组件
+## DataV：大屏可视化 UI 组件
 
 安装：pnpm i @dataview/datav-vue3
-温馨提示：Vue3安装dataV报错问题解决方案
-    1.忽略声明警告
-        文件：/src/shims-vue.d.ts
-            新增：declare module '@dataview/datav-vue3';
-    2.dataV配置文件修改
-        文件：node_modules/@dataview/datav-vue3/package.json
-           修改：修改前 "module": "./es/index.js",
-                 修改后 "module": "./es/index.mjs",
+温馨提示：Vue3 安装 dataV 报错问题解决方案 1.忽略声明警告
+文件：/src/shims-vue.d.ts
+新增：declare module '@dataview/datav-vue3';
+2.dataV 配置文件修改
+文件：node_modules/@dataview/datav-vue3/package.json
+修改：修改前 "module": "./es/index.js",
+修改后 "module": "./es/index.mjs",
+
 ---
-
-

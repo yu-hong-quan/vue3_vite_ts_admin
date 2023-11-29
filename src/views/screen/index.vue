@@ -1,22 +1,35 @@
 <template>
   <div id="screen_box" class="screen_box">
     <div class="layout_top">
-      <Decoration5 :duration="2" class="top_bg" :color="['#add5a2', '#cc163a']" />
+      <Decoration5
+        :duration="2"
+        class="top_bg"
+        :color="['#add5a2', '#cc163a']"
+      />
       <span class="title">O2O云实时数据监控平台</span>
     </div>
     <div class="layout_content">
       <div class="box_content content_left">
         <BorderBox1 class="data_box">
-          <Decoration7 class="data_box_title_box">&nbsp;&nbsp;数据监控大图1&nbsp;&nbsp;</Decoration7>
+          <Decoration7 class="data_box_title_box">
+            &nbsp;&nbsp;数据监控大图1&nbsp;&nbsp;
+          </Decoration7>
         </BorderBox1>
-        <Decoration1 style="width:200px; height:50px;margin: 20px 0;margin-top: 0;" />
+        <Decoration1
+          style="width: 200px; height: 50px; margin: 20px 0; margin-top: 0"
+        />
         <BorderBox1 class="data_box">
-          <Decoration7 class="data_box_title_box">&nbsp;&nbsp;数据监控大图2&nbsp;&nbsp;</Decoration7>
+          <Decoration7 class="data_box_title_box">
+            &nbsp;&nbsp;数据监控大图2&nbsp;&nbsp;
+          </Decoration7>
         </BorderBox1>
       </div>
       <div class="box_content content_center">
         <BorderBox10 class="content_center_top_box">BorderBox8</BorderBox10>
-        <Decoration1 :reverse="true" style="width:200px; height:50px;margin: 10px 0;" />
+        <Decoration1
+          :reverse="true"
+          style="width: 200px; height: 50px; margin: 10px 0"
+        />
         <div class="content_center_bottom_box">
           <Decoration8 class="bg_jiao_left" />
           <Decoration8 class="bg_jiao_right" :reverse="true" />
@@ -24,15 +37,25 @@
       </div>
       <div class="box_content content_right">
         <BorderBox1 class="data_box">
-          <Decoration7 class="data_box_title_box">&nbsp;&nbsp;数据监控大图3&nbsp;&nbsp;</Decoration7>
+          <Decoration7 class="data_box_title_box">
+            &nbsp;&nbsp;数据监控大图3&nbsp;&nbsp;
+          </Decoration7>
         </BorderBox1>
-        <Decoration1 style="width:200px; height:50px;margin: 20px 0;margin-top: 0;" />
+        <Decoration1
+          style="width: 200px; height: 50px; margin: 20px 0; margin-top: 0"
+        />
         <BorderBox1 class="data_box">
-          <Decoration7 class="data_box_title_box">&nbsp;&nbsp;数据监控大图4&nbsp;&nbsp;</Decoration7>
+          <Decoration7 class="data_box_title_box">
+            &nbsp;&nbsp;数据监控大图4&nbsp;&nbsp;
+          </Decoration7>
         </BorderBox1>
-        <Decoration1 style="width:200px; height:50px;margin: 20px 0;margin-top: 0;" />
+        <Decoration1
+          style="width: 200px; height: 50px; margin: 20px 0; margin-top: 0"
+        />
         <BorderBox1 class="data_box">
-          <Decoration7 class="data_box_title_box">&nbsp;&nbsp;数据监控大图5&nbsp;&nbsp;</Decoration7>
+          <Decoration7 class="data_box_title_box">
+            &nbsp;&nbsp;数据监控大图5&nbsp;&nbsp;
+          </Decoration7>
         </BorderBox1>
       </div>
     </div>
@@ -43,23 +66,29 @@
 import { onMounted, nextTick } from 'vue';
 import autofit from 'autofit.js';
 
-import { Decoration5, Decoration7, BorderBox1, Decoration1, BorderBox10, Decoration8 } from '@dataview/datav-vue3';
+import {
+  Decoration5,
+  Decoration7,
+  BorderBox1,
+  Decoration1,
+  BorderBox10,
+  Decoration8,
+} from '@dataview/datav-vue3';
 
 defineOptions({
   name: 'screen',
 });
-
 
 onMounted(() => {
   nextTick(() => {
     autofit.init({
       dh: 1080,
       dw: 1920,
-      el: "#screen_box",
-      resize: true
-    })
+      el: '#screen_box',
+      resize: true,
+    });
   });
-})
+});
 </script>
 
 <style lang="scss" scoped>
@@ -108,7 +137,6 @@ onMounted(() => {
       height: 100%;
       display: flex;
       flex-direction: column;
-
     }
 
     .content_left {

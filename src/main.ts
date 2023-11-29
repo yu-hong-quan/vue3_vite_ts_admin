@@ -14,6 +14,8 @@ import pinia from './store';
 import './permisstion';
 // 暗黑模式公共样式
 import 'element-plus/theme-chalk/dark/css-vars.css';
+// 引入大数据可视化平台UI组件库
+// import DataV, { setClassNamePrefix } from '@dataview/datav-vue3';
 
 // 获取当前环境变量
 console.log(import.meta.env);
@@ -27,5 +29,6 @@ app.use(globalComponents);
 app.use(router);
 // 安装状态管理器
 app.use(pinia);
+// app.use(DataV, { classNamePrefix: 'dv-' });
 // 将应用挂载到挂载点上
 app.mount('#app');

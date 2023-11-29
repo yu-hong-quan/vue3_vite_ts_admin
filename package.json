@@ -19,7 +19,9 @@
     "preinstall": "node ./scripts/preinstall.js"
   },
   "dependencies": {
+    "@dataview/datav-vue3": "0.0.0-test.1672506674342",
     "@element-plus/icons-vue": "^2.1.0",
+    "autofit.js": "^3.0.6",
     "axios": "^1.4.0",
     "element-plus": "^2.3.5",
     "nprogress": "^0.2.0",
